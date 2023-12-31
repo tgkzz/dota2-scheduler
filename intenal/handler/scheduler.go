@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"net/http"
+	"log"
 	"time"
 )
 
@@ -11,11 +11,11 @@ func (h *Handler) Scheduler() {
 
 		leaderboard, err := h.service.MakeRequest(regions)
 		if err != nil {
-			ServerError(err, http.StatusInternalServerError)
+			log.Fatalf("Error while making request to dotaapi: %s", err)
 		}
 
 		if err := h.service.UpdateLeaderboard(leaderboard[0]); err != nil {
-			ServerError(err, http.StatusInternalServerError)
+			log.Fatalf("Error while updating leaderboard: %s", err)
 		}
 
 		time.Sleep(5 * time.Minute)

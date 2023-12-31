@@ -10,11 +10,11 @@ func (h *Handler) IndexHandler(w http.ResponseWriter, r *http.Request) {
 	case http.MethodGet:
 		ldbrd, err := h.service.ShowLeaderboard()
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			ServerError(w, err, http.StatusInternalServerError)
 		}
 
 		if err = json.NewEncoder(w).Encode(ldbrd); err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			ServerError(w, err, http.StatusInternalServerError)
 		}
 
 	default:
