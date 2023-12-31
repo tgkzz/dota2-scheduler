@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Players (
+    "Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "Rank" INTEGER NOT NULL,
+    "Name" INTEGER NOT NULL,
+    "TeamID" VARCHAR(15),
+    "TeamTag" VARCHAR(50),
+    "Country" VARCHAR(10),
+    "Sponsor" VARCHAR(15)
+);
