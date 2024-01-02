@@ -9,6 +9,8 @@ import (
 	"log"
 )
 
+// TODO: fill layer have methods that is logically must not be their, make it in another package
+
 func main() {
 	conf, err := config.LoadConfig()
 	if err != nil {
@@ -29,9 +31,8 @@ func main() {
 	// handler initialization
 	controller := handler.NewHandler(serv)
 
-	//initializing scheduler
+	// initializing scheduler
 	go controller.Scheduler()
 
 	log.Fatal(server.Runserver(conf, controller.Routes()))
-
 }

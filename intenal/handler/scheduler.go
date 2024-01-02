@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// TODO: change the scheduled time, to time which includes in the server
 func (h *Handler) Scheduler() {
 	for {
 		regions := []string{"europe"}
