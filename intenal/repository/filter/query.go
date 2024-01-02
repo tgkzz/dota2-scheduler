@@ -29,7 +29,7 @@ func (f *FilterRepo) GetLeaderboardByFilter(filter models.Filter) (models.Leader
 		params = append(params, filter.Sponsor)
 	}
 	if filter.Country != "" {
-		query += " AND Country LIKE ?"
+		query += " AND Country = ?"
 		params = append(params, filter.Country)
 	}
 

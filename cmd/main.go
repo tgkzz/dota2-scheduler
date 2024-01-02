@@ -7,12 +7,22 @@ import (
 	"dota2scheduler/intenal/server"
 	"dota2scheduler/intenal/service"
 	"log"
+	"os"
 )
 
 // TODO: fill layer have methods that is logically must not be their, make it in another package
 
 func main() {
-	conf, err := config.LoadConfig()
+	var configPath string
+
+	switch len(os.Args[1:]) {
+	case 1:
+		configPath = os.Args[1]
+	default:
+		configPath = "./.env"
+	}
+
+	conf, err := config.LoadConfig(configPath)
 	if err != nil {
 		log.Fatalf("Error while loading config, %s", err)
 	}

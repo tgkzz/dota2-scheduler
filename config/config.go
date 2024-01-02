@@ -17,9 +17,9 @@ type DB struct {
 	SQL            string
 }
 
-func LoadConfig() (Config, error) {
+func LoadConfig(path string) (Config, error) {
 
-	if err := godotenv.Load("./.env"); err != nil {
+	if err := godotenv.Load(path); err != nil {
 		return Config{}, err
 	}
 	config := Config{
