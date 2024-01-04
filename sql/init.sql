@@ -1,3 +1,9 @@
+CREATE TABLE if not exists Server (
+    "TimePosted" INTEGER NOT NULL,
+    "NextPostTime" INTEGER NOT NULL,
+    "ServerTime" INTEGER NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS Players (
     "Id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "Rank" INTEGER NOT NULL,
