@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"github.com/joho/godotenv"
 	"os"
 )
@@ -32,7 +31,6 @@ func LoadConfig(path string) (Config, error) {
 			SQL:            os.Getenv("SQL"),
 		},
 	}
-	fmt.Println(config)
 
 	return config, nil
 }

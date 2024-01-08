@@ -12,6 +12,7 @@ func (h *Handler) Routes() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/api", h.IndexHandler)
+	mux.HandleFunc("/api/server", h.ShowServerInfo)
 	mux.HandleFunc("/api/filter", h.FitlerHandler)
 
 	return h.ServeHTTP(mux)

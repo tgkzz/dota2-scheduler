@@ -35,10 +35,9 @@ func (s *ServerRepo) ReadServer() (models.Server, error) {
 
 	var server models.Server
 
-	_, err := s.DB.Exec(query, &server.TimePosted, &server.ServerTime, &server.NextScheduledPostTime)
+	err := s.DB.QueryRow(query).Scan(&server.TimePosted, &server.ServerTime, &server.NextScheduledPostTime)
 
 	return server, err
-
 }
 
 func (s *ServerRepo) DeleteServer() error {

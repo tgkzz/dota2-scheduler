@@ -7,7 +7,7 @@ Dota 2 Scheduler is a pet project based on retrieving information from Dota serv
 
 All API routes are available in Swagger documentation
 
-#### Get all items
+#### Get swagger documentation
 
 ```http
   GET /api/swagger

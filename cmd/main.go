@@ -10,8 +10,6 @@ import (
 	"os"
 )
 
-// TODO: fill layer have methods that is logically must not be their, make it in another package
-
 func main() {
 	var configPath string
 

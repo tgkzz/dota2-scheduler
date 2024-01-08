@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// TODO: change the scheduled time, to time which includes in the server
+// Scheduler TODO: realize the work of the scheduler using cron lib
 func (h *Handler) Scheduler() {
 	for {
 		regions := []string{"europe"}
@@ -28,8 +28,20 @@ func (h *Handler) Scheduler() {
 			log.Fatalf("Error while updating leaderboard: %s", err)
 		}
 
-		log.Print("new req\n")
+		sleepTime := server.NextScheduledPostTime - server.ServerTime
 
-		time.Sleep(5 * time.Minute)
+		log.Printf("next scheduled post time is %d\n", server.NextScheduledPostTime)
+
+		log.Printf("server time is %d\n", server.ServerTime)
+
+		log.Printf("next scheduled post time in seconds is %d\n", sleepTime)
+
+		sleepTimeInMinute := sleepTime / 60
+
+		log.Printf("Request has been handled! Next scheduled request will be in %d minute\n", sleepTimeInMinute)
+
+		log.Println("------------------------------------")
+
+		time.Sleep(time.Duration(sleepTime) * time.Second)
 	}
 }
