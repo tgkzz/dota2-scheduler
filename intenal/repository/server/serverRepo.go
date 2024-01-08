@@ -12,6 +12,8 @@ type ServerRepo struct {
 type Server interface {
 	CreateServer(server models.Server) error
 	DeleteServer() error
+	ReadServer() (models.Server, error)
+	GetServerInfo() (models.Server, error)
 }
 
 func NewServerRepo(db *sql.DB) *ServerRepo {

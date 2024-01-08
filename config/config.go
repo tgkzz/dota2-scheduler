@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"github.com/joho/godotenv"
 	"os"
 )
@@ -27,10 +28,11 @@ func LoadConfig(path string) (Config, error) {
 		Port: os.Getenv("PORT"),
 		DB: DB{
 			DriverName:     os.Getenv("DRIVERNAME"),
-			DataSourceName: os.Getenv("DATASOURCE"),
+			DataSourceName: os.Getenv("DATASOURCENAME"),
 			SQL:            os.Getenv("SQL"),
 		},
 	}
+	fmt.Println(config)
 
 	return config, nil
 }
