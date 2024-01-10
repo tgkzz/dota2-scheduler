@@ -2,14 +2,19 @@ package handler
 
 import (
 	"dota2scheduler/intenal/service"
+	"log"
 )
 
 type Handler struct {
-	service *service.Service
+	service     *service.Service
+	infoLogger  *log.Logger
+	errorLogger *log.Logger
 }
 
-func NewHandler(service *service.Service) *Handler {
+func NewHandler(service *service.Service, infoLogger *log.Logger, errorLogger *log.Logger) *Handler {
 	return &Handler{
-		service: service,
+		service:     service,
+		infoLogger:  infoLogger,
+		errorLogger: errorLogger,
 	}
 }

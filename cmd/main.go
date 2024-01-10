@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	// setting config file for the project
 	var configPath string
 
 	switch len(os.Args[1:]) {
@@ -20,14 +21,32 @@ func main() {
 		configPath = "./.env"
 	}
 
+	// setting up log file
+	logfile, err := os.Create("app.log")
+	if err != nil {
+		log.Fatalf("Error while creating log file %s", err)
+	}
+	defer logfile.Close()
+
+	flags := log.Ldate | log.Ltime | log.Lshortfile
+
+	log.SetOutput(logfile)
+	log.SetFlags(flags)
+
+	infoLogger := log.New(logfile, "INFO: ", flags)
+	errorLogger := log.New(logfile, "ERROR: ", flags)
+
+	// loading config
 	conf, err := config.LoadConfig(configPath)
 	if err != nil {
-		log.Fatalf("Error while loading config, %s", err)
+		errorLogger.Fatalf("Error while loading config, %s", err)
+
 	}
 
+	// loading db
 	db, err := repository.NewDB(conf)
 	if err != nil {
-		log.Fatalf("Error while opening db, %s", err)
+		errorLogger.Fatalf("Error while opening db, %s", err)
 	}
 
 	// repo initialization
@@ -37,10 +56,10 @@ func main() {
 	serv := service.NewService(*repo)
 
 	// handler initialization
-	controller := handler.NewHandler(serv)
+	controller := handler.NewHandler(serv, infoLogger, errorLogger)
 
 	// initializing scheduler
 	go controller.Scheduler()
 
-	log.Fatal(server.Runserver(conf, controller.Routes()))
+	errorLogger.Fatal(server.Runserver(conf, controller.Routes(), infoLogger))
 }
