@@ -1,13 +1,8 @@
-INFO: 2024/01/10 09:09:15 runserver.go:15: server is listening on http://localhost:4000
-INFO: 2024/01/10 09:09:28 scheduler.go:37: time posted of the leaderboard is 1704852781
-INFO: 2024/01/10 09:09:28 scheduler.go:39: next scheduled post time is 1704856380
-INFO: 2024/01/10 09:09:28 scheduler.go:41: server time is 1704856079
-INFO: 2024/01/10 09:09:28 scheduler.go:43: next scheduled post time in seconds is 301
-INFO: 2024/01/10 09:09:28 scheduler.go:47: Request has been handled! Next scheduled request will be in 5 minute
-
-INFO: 2024/01/10 09:14:42 scheduler.go:37: time posted of the leaderboard is 1704856381
-INFO: 2024/01/10 09:14:42 scheduler.go:39: next scheduled post time is 1704859980
-INFO: 2024/01/10 09:14:42 scheduler.go:41: server time is 1704856424
-INFO: 2024/01/10 09:14:42 scheduler.go:43: next scheduled post time in seconds is 3556
-INFO: 2024/01/10 09:14:42 scheduler.go:47: Request has been handled! Next scheduled request will be in 59 minute
+INFO: 2024/01/15 10:41:29 runserver.go:15: server is listening on http://localhost:4000
+ERROR: 2024/01/15 10:41:33 filterhandler.go:25: filters are empty
+INFO: 2024/01/15 10:41:44 scheduler.go:37: time posted of the leaderboard is 1705291981
+INFO: 2024/01/15 10:41:44 scheduler.go:39: next scheduled post time is 1705295580
+INFO: 2024/01/15 10:41:44 scheduler.go:41: server time is 1705293690
+INFO: 2024/01/15 10:41:44 scheduler.go:43: next scheduled post time in seconds is 1890
+INFO: 2024/01/15 10:41:44 scheduler.go:47: Request has been handled! Next scheduled request will be in 31 minute
 

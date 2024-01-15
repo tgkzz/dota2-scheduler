@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	// setting config file for the project
 	var configPath string
 

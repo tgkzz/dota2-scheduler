@@ -15,6 +15,7 @@ func (h *Handler) ShowServerInfo(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		w.Header().Set("Content-Type", "application/json")
 		if err := json.NewEncoder(w).Encode(server); err != nil {
 			h.errorLogger.Printf("error while encoding the result %s", err)
 			ServerError(w, err, http.StatusInternalServerError)

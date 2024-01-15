@@ -11,8 +11,6 @@ import (
 func ServerError(w http.ResponseWriter, err error, status int) {
 	logMsg := err.Error() + " " + strconv.Itoa(status)
 
-	log.Print(logMsg)
-
 	errResponse := models.ErrResponse{
 		Error:  logMsg,
 		Status: status,

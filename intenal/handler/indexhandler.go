@@ -14,6 +14,7 @@ func (h *Handler) IndexHandler(w http.ResponseWriter, r *http.Request) {
 			ServerError(w, err, http.StatusInternalServerError)
 		}
 
+		w.Header().Set("Content-Type", "application/json")
 		if err = json.NewEncoder(w).Encode(ldbrd); err != nil {
 			h.errorLogger.Printf("error while showing current leaderboard %s", err)
 			ServerError(w, err, http.StatusInternalServerError)
