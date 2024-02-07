@@ -6,6 +6,7 @@ import (
 	"dota2scheduler/intenal/repository"
 	"dota2scheduler/intenal/server"
 	"dota2scheduler/intenal/service"
+	"dota2scheduler/redis"
 	"log"
 	"os"
 )
@@ -50,11 +51,17 @@ func main() {
 		errorLogger.Fatalf("Error while opening db, %s", err)
 	}
 
+	// loading redis
+	client, err := redis.NewRedisClient()
+	if err != nil {
+		errorLogger.Fatalf("Error while opening client %s", err)
+	}
+
 	// repo initialization
 	repo := repository.NewRepo(db)
 
 	// service initialization
-	serv := service.NewService(*repo)
+	serv := service.NewService(*repo, client)
 
 	// handler initialization
 	controller := handler.NewHandler(serv, infoLogger, errorLogger)

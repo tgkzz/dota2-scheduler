@@ -7,8 +7,10 @@ import (
 // Scheduler TODO: realize the work of the scheduler using cron lib
 func (h *Handler) Scheduler() {
 	for {
+
 		regions := []string{"europe"}
 
+		//database
 		leaderboard, err := h.service.MakeRequest(regions)
 		if err != nil {
 			h.errorLogger.Fatalf("Error while making request to dotaapi: %s", err)
@@ -25,6 +27,10 @@ func (h *Handler) Scheduler() {
 
 		if err := h.service.UpdateLeaderboard(leaderboard[0]); err != nil {
 			h.errorLogger.Fatalf("Error while updating leaderboard: %s", err)
+		}
+
+		if err := h.service.Filler.UpdateRedis(leaderboard[0]); err != nil {
+			h.errorLogger.Fatalf("error while updating redis %s", err)
 		}
 
 		sleepTime := server.NextScheduledPostTime - server.ServerTime

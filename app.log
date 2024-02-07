@@ -1,8 +1,2 @@
-INFO: 2024/01/15 10:41:29 runserver.go:15: server is listening on http://localhost:4000
-ERROR: 2024/01/15 10:41:33 filterhandler.go:25: filters are empty
-INFO: 2024/01/15 10:41:44 scheduler.go:37: time posted of the leaderboard is 1705291981
-INFO: 2024/01/15 10:41:44 scheduler.go:39: next scheduled post time is 1705295580
-INFO: 2024/01/15 10:41:44 scheduler.go:41: server time is 1705293690
-INFO: 2024/01/15 10:41:44 scheduler.go:43: next scheduled post time in seconds is 1890
-INFO: 2024/01/15 10:41:44 scheduler.go:47: Request has been handled! Next scheduled request will be in 31 minute
-
+INFO: 2024/02/02 11:24:23 runserver.go:15: server is listening on http://localhost:4000
+ERROR: 2024/02/02 11:25:58 scheduler.go:33: error while updating redis read tcp 10.202.0.218:64566->54.93.121.118:15640: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.

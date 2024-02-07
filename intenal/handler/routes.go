@@ -14,6 +14,7 @@ func (h *Handler) Routes() http.Handler {
 	mux.HandleFunc("/api", h.IndexHandler)
 	mux.HandleFunc("/api/server", h.ShowServerInfo)
 	mux.HandleFunc("/api/filter", h.FitlerHandler)
+	mux.HandleFunc("/api/redis", h.RedisHandler)
 
 	return h.ServeHTTP(mux)
 }
